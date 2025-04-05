@@ -25,7 +25,7 @@ pub fn Home() -> impl IntoView {
                     and HTTP Streaming, but advocate for alternative frameworks like SolidJS, SvelteJS, and LeptosRS 
                     for their superior rendering performance. My development philosophy prioritizes simplicity, 
                     clear comments, rigorous testing, best practices, and continuous learning. Lastly, do not hesitate to reach out
-                    enjoy this picture of my best friend!
+                    and enjoy this picture of my best friend!
                 """</p>
                 <div>
                     <button href="#contact" class="btn primary text-lg white-text">"Contact Me"</button>
