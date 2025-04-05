@@ -1,0 +1,284 @@
+$lighter: rgb(31 41 55);
+$darker: rgb(17 24 39);
+$blue: #0492c2;
+$dark-blue: rgb(30 58 138);
+$blue-text: #93c5fd;
+$text-desktop: 1.5rem; 
+$text-desktop-lg: 2.5rem; 
+$text-mobile: 2.5rem;
+$text-mobile-lg: 3rem;
+$card: #374151;
+
+@mixin text($s) {
+  font-size: $s;
+}
+
+html, body, main {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $lighter;
+  color: white;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  gap: 3rem;
+}
+
+header {
+  margin: 2rem;
+  background-color: $lighter;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: $blue-text;
+  font-weight: bold;
+}
+#about {
+  background-color: $darker;
+  display: flex; 
+}
+#projects {
+  padding: 0 0 4rem 0;
+}
+.projects-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+.card {
+  padding: 2rem;
+  background-color: $card;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.skills {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 1rem;
+  p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; /* Don't forget this one */
+    text-align: center;
+    padding: 1rem;
+    width: auto;
+    background-color: $dark-blue;
+    border-radius: 30px;
+  }
+}
+
+#skills {
+  background-color: $darker;
+  padding: 1rem 4rem 4rem 4rem;
+}
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 2rem 0 4rem 0;
+}
+.contact-card {
+  border-radius: 25px;
+  background-color: $card;
+  width: 75%;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 1rem 4rem 1rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    gap: 2rem;
+    label {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      input, textarea {
+        background-color: $darker;
+        border: 1px solid gray;
+        color: white;
+        font-size: $text-desktop-lg;
+      } 
+      textarea {
+        resize: none;
+      }
+    }
+    button {
+      width: 75%;
+    }
+  }
+}
+footer {
+  background-color: $darker;
+  padding: 1rem 0 1rem 0;
+}
+
+.blue-text {
+  color: $blue-text;
+}
+.white-text {
+  color: white;
+}
+.bold-text {
+  font-weight: bold;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  border: 2px solid black;
+}
+.primary {
+  background-color: $blue;
+}
+.clear {
+  background-color: transparent;
+  border: none;
+}
+.text-center {
+  text-align: center;
+}
+
+img.bobby {
+  border-radius: 50px;
+  width: 50%;
+}
+.bi {
+  height: 10vw;
+  cursor: pointer;
+}
+
+.none {
+  display: none;
+}
+.exiting-right {
+  animation: exitingRight .5s forwards;
+}
+.entering-left {
+  animation: exitingRight .5s forwards reverse;
+}
+.exiting-left {
+  animation: exitingLeft .5s forwards;
+}
+.entering-right {
+  animation: exitingLeft .5s forwards reverse;
+}
+
+@keyframes exitingLeft {
+  0% { opacity: 1; } 
+  100% { 
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes exitingRight {
+  0% { opacity: 1; } 
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Medium/Large devices (landscape tablets, 768px and up) */
+@media only screen and (min-device-width: 768px) { 
+  body {
+    @include text($text-desktop);
+    line-height: 2rem;
+  }
+  .text-lg {
+    @include text($text-desktop-lg);
+  }
+  .btn {
+    border-radius: 10px;
+    padding: 1rem;
+  }  
+  #about {
+    padding: 4rem;
+  }
+  .hero-section {
+    width: 50%;
+  }
+  .card {
+    width: 33%;
+    min-height: 30vw;
+  }
+  #skills {
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .contact-card {
+    form {
+      label {
+        textarea {
+          font-size: $text-desktop-lg;
+          height: 15vw;
+        }
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 768px and up) */
+@media only screen and (max-device-width: 768px) {  
+  body {
+    @include text($text-mobile);
+    line-height: 3.5rem;
+  }
+  .text-lg {
+    @include text($text-mobile-lg);
+  }
+  .btn { 
+    border-radius: 15px;
+    padding: 2rem;
+  }
+  #about {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 3rem 4rem 3rem;
+    gap: 3rem;
+  } 
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .card {
+    width: 50%;
+    min-height: 95vw;
+  }
+  .w-100 {
+    width: 100%;
+  } 
+  .contact-card {
+    form {
+      label{
+        textarea {
+          height: 25vw;
+        }
+      }
+    }
+  }
+}
