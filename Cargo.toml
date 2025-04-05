@@ -31,6 +31,7 @@ serde_json = { version = "1.0.140", optional = true }
 reqwest = { version = "0.12.12", features = ["json"], optional = true }
 leptos_actix = { version = "0.7.7", optional = true }
 leptos-use = "0.15.7"
+env_logger = { version = "0.11.8", optional = true }
 dotenvy = { version = "0.15.7", optional = true }
 
 [profile.release]
@@ -59,13 +60,14 @@ ssr = [
     "dep:simple_logger",
     "dep:serde_json",
     "dep:dotenvy",
+    "dep:env_logger",
 ]
 
 [package.metadata.leptos]
 # The name used by wasm-bindgen/cargo-leptos for the JS/WASM bundle. Defaults to the crate name
 output-name = "portfolio"
 # The site root folder is where cargo-leptos generate all output. WARNING: all content of this folder will be erased on a rebuild. Use it in your server setup.
-site-root = "target/site/portfolio"
+site-root = "target/site"
 # The site-root relative folder where all compiled output (JS, WASM and CSS) is written
 # Defaults to pkg
 site-pkg-dir = "pkg"

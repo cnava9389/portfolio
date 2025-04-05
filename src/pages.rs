@@ -50,9 +50,9 @@ pub fn Home() -> impl IntoView {
                 </div>
                 <div class="hero-section center">
                     <ul class="skills-list">
-                        <li><b>"Languages: "</b>"Rust, JavaScript/TypeScript, Python, Go"</li>
+                        <li><b>"Languages: "</b>"Rust, JavaScript/TypeScript, Python, Go, CSS, HTML"</li>
                         <li><b>"Runtimes: "</b>"Tokio, Node.js, Deno, WASM"</li>
-                        <li><b>"Frameworks: "</b>"Express.js, Django, Flask, Actix-web, Tauri, Next.js, React, Svelte-Kit"</li>
+                        <li><b>"Frameworks: "</b>"Express.js, Django, Flask, Actix-web, Tauri, Next.js, React, Svelte-Kit, SCSS"</li>
                         <li><b>"Databases: "</b>"PostgreSQL, Sqlite, Redis, SurrealDB, MongoDB"</li>
                         <li><b>"Cloud: "</b>"AWS, Docker, Podman, Linux"</li>
                         <li><b>"Tools: "</b>"Git, CI/CD, Nix/NixOS"</li>

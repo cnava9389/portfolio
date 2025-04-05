@@ -1,7 +1,7 @@
 use crate::app::*;
 use actix_files::Files;
 use actix_web::{App as ActixApp, *};
-use leptos::{config::get_configuration, logging, prelude::*};
+use leptos::{config::get_configuration, prelude::*};
 use leptos_actix::{LeptosRoutes, generate_route_list};
 use leptos_meta::{MetaTags, Meta, Link, Script};
 
@@ -16,13 +16,14 @@ async fn favicon(leptos_options: web::Data<LeptosOptions>) -> actix_web::Result<
 
 pub async fn run() -> std::io::Result<()> {
     _ = dotenvy::dotenv();
-
-    //let dir = web::Data::new(Directories::new(".", vec!["/target", ".env", "/.git"])?);
+    env_logger::init();
 
     let conf = get_configuration(None).unwrap();
     let addr = conf.leptos_options.site_addr;
 
-    logging::warn!("serving at {addr}");
+    log::info!("Serving at {}, {}", addr, conf.leptos_options.site_root);
+
+    let req = web::Data::new(reqwest::Client::new());
 
     HttpServer::new(move || {
         // Generate the list of routes in your Leptos App
@@ -37,7 +38,6 @@ pub async fn run() -> std::io::Result<()> {
             .service(favicon)
             .leptos_routes(routes, {
                 let options = leptos_options.clone();
-
                 move || {
                     view! {
                         <!DOCTYPE html>
@@ -58,8 +58,8 @@ pub async fn run() -> std::io::Result<()> {
                     }
                 }
             })
-            //.app_data(dir.clone())
             .app_data(web::Data::new(leptos_options.to_owned()))
+            .app_data(req.clone())
             .wrap(middleware::Compress::default())
     })
     .bind(&addr)?
